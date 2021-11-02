@@ -1,0 +1,31 @@
+1. 
+# Load anaconda in cluster before do next.
+# Create a new environment cell_process_env
+conda create --name cell_process_env python=3.8.8
+#activate the environment, everytime you enter the cluster, you need to activate the environment before running the codes.
+conda activate cell_process_env
+
+2.
+# Make sure you can run python in command-line, before doing next.
+# Install requirements
+pip install opencv-python
+pip install matplotlib
+pip install numpy
+pip install scipy
+pip install astropy
+
+3.
+# Download codes
+git clone https://github.com/QibingJiang/cell_process_moffitt_matlab.git
+
+cd cell_process_moffitt_matlab
+
+4.
+#enter matlab working space
+matlab
+
+#The following command should be run in matlab working space
+if count(py.sys.path,'') == 0  insert(py.sys.path,int32(0),''); end
+#The second parameter in the following command should be the beacon directory in the current cluster.
+py.cell_process.main("./configure.txt", "/home/qibing/disk_16t/qibing/Pt204/RawData/Beacon-73")
+
